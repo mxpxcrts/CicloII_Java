@@ -14,13 +14,39 @@ public class Ficha {
         this.posicion = posicion;
     }
 
+    //Getter & Setter 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getColor(){
+        return color;
+    }
+
+    public void serColor(String color){
+        this.color = color;
+    }
+
+    public int getPosicion(){
+        return posicion;
+    }
+
+    public void setPosicion(int posicion){
+        this.posicion = posicion;
+    }
+
+
     //Métodos de la Clase 
     public String movimiento(int pInicial, int pFinal){
         return "La ficha se mueve del punto inicial " + pInicial + " al punto final " + pFinal;
     }
 
-    public String desplazamiento(){
-        return "La ficha se está moviendo";
+    public String desplazamiento(String nombre){
+        return "La ficha " + nombre + " se está moviendo";
     }
 
     public String toString(){
