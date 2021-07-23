@@ -1,46 +1,44 @@
 package retos.misiontic2022.ciclo2;
 
 public class Franquicia {
-    
+
+
     // Atributos de la Clase
 
-    private int pTiempo;
-    private double pCapital; 
-    private double pInteres;
+
+    private double resultado;
     private double interesSimple;
-    private double interesCompuesto;  
-    private double resultado; 
+    private double interesCompuesto; 
+    private double resultadoInteres; 
+
 
     //Método constructor 
 
-    public Franquicia(int pTiempo, double pCapital, double pInteres){
-
-        this.pTiempo = pTiempo;
-        this.pCapital = pCapital;
-        this.pInteres = pInteres;
-
+    public Franquicia(){       
     }
 
     // Métodos de la Clase 
 
-    public void cacularInteresSimple(double pCapital, double pInteres, int pTiempo){
+    public double calcularInteresSimple(int tiempo, double capital, double interes){
 
-        interesSimple = pCapital * pInteres * pTiempo;
+        interesSimple = capital * interes * tiempo;
+        return interesSimple;
 
-    }
+    } 
 
-    public void calcularInteresCompuesto(double pCapital, double pInteres, int pTiempo){
+    public double calcularInteresCompuesto(int tiempo, double capital, double interes){
 
-        //POTENCIAR UN NÚMERO
-        //ALT interesCompuesto = Math.pow(1 + pInteres, pTiempo) * pCapital;   
+        interesCompuesto = Math.pow(1 + interes, tiempo) * capital; 
+        return interesCompuesto;
 
-        interesCompuesto = pCapital * Math.pow(1+(pInteres), pTiempo) - 1;
-
-    }
+    } 
 
     public String compararFranquicia(int pTiempo, double pCapital, double pInteres){
 
-        resultado = interesSimple - interesCompuesto;
+
+        resultadoInteres = calcularInteresCompuesto(pTiempo, pCapital, pInteres) - calcularInteresSimple(pTiempo, pCapital, pInteres);
+
+        resultado = resultadoInteres % (int) Math.pow(10, (int) Math.log10(resultadoInteres));
         
         if (pInteres == 0){
             return "Faltan datos para calcular la diferencia en el total de intereses generados para el proyecto.";
@@ -50,8 +48,8 @@ public class Franquicia {
 
         }
 
-        //return "La diferencia en el total de intereses generados para el proyecto, si escogemos entre evaluarlo a una tasa de interés Compuesto y evaluarlo a una tasa de interés Simple, asciende a la cifra de: $" + resultado;
-        
+
+
     }
 
 
