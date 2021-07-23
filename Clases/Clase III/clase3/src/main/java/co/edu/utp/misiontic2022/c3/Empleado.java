@@ -25,13 +25,11 @@ public class Empleado extends Persona {
     // Si en la clase Padre el atributo mostrar tuviera otro tipo de retorno éste también debería tener el mismo tipo.
 
     public void mostrar(){
-        System.out.println("Empleado ----> Nombre: " + super.getNombre() + " Edad: " + super.getEdad() + " Sueldo: " +sueldoBruto);
+        System.out.println("Empleado");
     }
 
-
-
-
-
-
+    public String toString() {
+        return "Empleado ---> Nombre: " + super.getNombre() + " Edad: " +super.getEdad() + " Sueldo: " +sueldoBruto;
+    }
 
 }

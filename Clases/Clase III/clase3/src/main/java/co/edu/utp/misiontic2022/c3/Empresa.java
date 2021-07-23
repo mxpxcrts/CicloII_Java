@@ -6,9 +6,13 @@ public class Empresa {
 
     private String nombre;
 
-    //! RELACION FUERTE
+    //? Composición ----> Atributo
+    //? Agregación ----> Parámetro de un método
 
-    private Empleado empleado;
+    //! RELACION FUERTE / COMPOSICIÓN
+    // Esta relación se representa desde los atributos.
+
+    private Empleado empleado; // Relación: La empresa tiene UN empleado
 
     // Método Constructor
 
@@ -22,6 +26,8 @@ public class Empresa {
 
     // Por norma es mejor manejar el mismo nombre de los atributos o variables
 
+    //En este caso el Empleado se convierte en un objeto
+
     public Empresa(String nombre, Empleado empleado){
         
         this.nombre = nombre;
@@ -32,6 +38,13 @@ public class Empresa {
     // Es un método de la clase Object y se utiliza para convertir a String (es decir, a una cadena de texto) cualquier objeto Java.
 
     public String toString(){
-        return "Empresa: " + nombre + " Empleado: " + empleado;
+        return "Empresa: " + nombre + " Empleado: " + empleado.toString();
+    }
+
+    //! RELACIÓN DÉBIL / AGREGACIÓN
+    // Representación de la AGREGACIÓN (relación débil), esta relación se representa por medio de un parámetro de un método, en este caso también se instacia el parámetro como un objeto, que traera de la otra clase.
+
+    public String contactoCliente(Cliente cliente){
+        return cliente.getTelefonoContacto();
     }
 }

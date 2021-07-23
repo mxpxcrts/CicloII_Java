@@ -14,10 +14,8 @@ public class App
 
         Persona objPersona1 = new Empleado("Marcela", 32, 2345.25);
         Persona objPersona2 = new Cliente("Paulo", 30, "301 246 5512");
-
-        // Para el ejemplo de la composición
-
-        Empleado objPersona3 = new Empleado("Luis", 15, 1254.26);
+        Persona objPersona3 = new Empleado("Luis", 15, 1254.26);
+        Persona objPersona4 = new Cliente("Alvaro", 63, "300 558 5059");     
 
         // Mostrar datos llamando al método
         // * Polimorfismo APLICADO
@@ -28,6 +26,11 @@ public class App
 
         // Composición
 
-        Empresa objEmpresa = Empresa("MinTic2022", objPersona3);
+        Empresa objEmpresa = new Empresa("MinTic2022", (Empleado)objPersona3); // (Empleado)objPersona3) ésta línea representa el tipo de relación (en este caso es una relación fuerte (Composición)). Empresa TIENE UN Empleado
+        System.out.println(objEmpresa.toString());
+
+        // Agregación
+        
+        System.out.println(objEmpresa.contactoCliente((Cliente)objPersona4)); 
     }
 }
