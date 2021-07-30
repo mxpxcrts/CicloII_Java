@@ -6,47 +6,54 @@ public class Franquicia {
     // Atributos de la Clase
 
 
-    private double resultado;
-    private double interesSimple;
-    private double interesCompuesto; 
-    private double resultadoInteres; 
+    private String proyecto;
+    private int tiempo;
+    private double capital; 
+    private double interes; 
 
 
     //Método constructor 
 
-    public Franquicia(){       
+    public Franquicia(){
+        proyecto = ""; 
+        tiempo = 0; 
+        capital = 0; 
+        interes = 0;       
     }
 
+    public String getNombreProyecto(){
+        return proyecto;
+    }
     // Métodos de la Clase 
 
-    public double calcularInteresSimple(int tiempo, double capital, double interes){
+    public double calcularInteresSimple(){
 
-        interesSimple = capital * interes * tiempo;
+        double interesSimple = capital * interes * tiempo;
         return interesSimple;
 
     } 
 
-    public double calcularInteresCompuesto(int tiempo, double capital, double interes){
+    public double calcularInteresCompuesto(){
 
-        interesCompuesto = Math.pow(1 + interes, tiempo) * capital; 
+        double interesCompuesto = capital * ( Math.pow( 1 + interes, tiempo ) - 1);
         return interesCompuesto;
 
     } 
 
     public String compararFranquicia(int pTiempo, double pCapital, double pInteres){
 
+        tiempo = pTiempo;
+        capital = pCapital;
+        interes = pInteres;
 
-        resultadoInteres = calcularInteresCompuesto(pTiempo, pCapital, pInteres) - calcularInteresSimple(pTiempo, pCapital, pInteres);
+        double resultado = calcularInteresCompuesto() - calcularInteresSimple();
 
-        resultado = resultadoInteres % (int) Math.pow(10, (int) Math.log10(resultadoInteres));
-        
-        if (pInteres == 0){
-            return "Faltan datos para calcular la diferencia en el total de intereses generados para el proyecto.";
+        if ( resultado > 0 ) {    		
+        	return "La diferencia en el total de intereses generados para el proyecto, si escogemos entre evaluarlo a una tasa de interés Compuesto y evaluarlo a una tasa de interés Simple, asciende a la cifra de: $" + resultado;  
         }
-        else {
-            return "La diferencia en el total de intereses generados para el proyecto, si escogemos entre evaluarlo a una tasa de interés Compuesto y evaluarlo a una tasa de interés Simple, asciende a la cifra de: $" + resultado;
-
-        }
+	    {    		        	
+        	return "Faltan datos para calcular la diferencia en el total de intereses generados para el proyecto.";
+	    }
 
 
 
